@@ -42,6 +42,8 @@ Este projeto tem como objetivo realizar a análise de score de crédito de clien
 2. Instale as bibliotecas necessárias:
    ```bash
    pip install pandas scikit-learn
+ 3. Execute o script principal
+    ``` bash
     python script.py 
 
 ## Arquivos Utilizados
