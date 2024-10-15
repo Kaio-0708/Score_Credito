@@ -1,23 +1,19 @@
-import pandas as ps
+import pandas as pd
 
 tabela = pd.read_csv("clientes.csv")
 
 display(tabela)
-
 display(tabela.info())
 
 from sklearn.preprocessing import LabelEncoder
 
 codificador = LabelEncoder()
-
 tabela["profissao"] = codificador.fit_transform(tabela["profissao"])
 
 codificador2 = LabelEncoder()
-
 tabela["mix_credito"] = codificador2.fit_transform(tabela["mix_credito"])
 
 codificador3 = LabelEncoder()
-
 tabela["comportamento_pagamento"] = codificador3.fit_transform(tabela["comportamento_pagamento"])
 
 display(tabela.info())
@@ -27,7 +23,7 @@ x = tabela.drop(columns=["score_credito", "id_cliente"])
 
 from sklearn.model_selection import train_test_split
 
-x_treino, x_teste, y_treino, y_teste = train_test_split(x,y, test_size=0.3)
+x_treino, x_teste, y_treino, y_teste = train_test_split(x, y, test_size=0.3)
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -38,9 +34,8 @@ modelo_knn = KNeighborsClassifier()
 modelo_arvoredecisao.fit(x_treino, y_treino)
 modelo_knn.fit(x_treino, y_treino)
 
-
 previsao_arvoredecisao = modelo_arvoredecisao.predict(x_teste)
-previsao_knn = modelo_knn(x_teste)
+previsao_knn = modelo_knn.predict(x_teste)
 
 from sklearn.metrics import accuracy_score
 
